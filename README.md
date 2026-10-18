@@ -1,5 +1,7 @@
 # DebtScope
 
+[![tests](https://github.com/SecondinCode/debtscope/actions/workflows/tests.yml/badge.svg)](https://github.com/SecondinCode/debtscope/actions/workflows/tests.yml)
+
 **Corporate debt structure and maturity-wall extraction from SEC EDGAR filings.**
 
 Give it a ticker. DebtScope downloads the latest 10-K (or 10-Q / 20-F) and the
