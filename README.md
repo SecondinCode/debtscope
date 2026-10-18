@@ -14,6 +14,8 @@ audit trail.
 python -m debtscope AAPL MSFT ORCL
 ```
 
+**[Live demo: Apple 10-K in the browser, no install](https://secondincode.github.io/debtscope/)**
+
 ![DebtScope crawler on Apple's FY2025 10-K](docs/crawler.gif)
 
 ## In plain English

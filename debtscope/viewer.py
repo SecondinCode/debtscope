@@ -222,6 +222,8 @@ def write_viewer(html: str, profile: DebtProfile, path: str | Path) -> Path:
     style = soup.new_tag("style")
     style.string = _asset("crawler.css")
     head.append(style)
+    for old in head.find_all("title"):
+        old.decompose()                       # keep a single, descriptive tab title
     title = soup.new_tag("title")
     title.string = f"{profile.ticker or profile.company} {profile.form} - DebtScope crawler"
     head.append(title)

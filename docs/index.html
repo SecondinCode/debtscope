@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DebtScope - live demo</title>
+<meta name="description" content="DebtScope reads a company's SEC annual report, finds every bond it has issued, reconciles them with the official totals and shows the result in an Excel credit pack and an animated crawler.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--ink:#14213D;--ink-2:#1D2D50;--line:#2B3B61;--text:#E7ECF5;--muted:#9AA8C2;--thread:#3CC8E8;--debt:#D6336C;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--ink);color:var(--text);font:16px/1.6 var(--sans)}
+a{color:var(--thread)}
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--thread);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{padding:48px 0 28px}
+.name{font:600 15px var(--mono);color:var(--thread);margin:0 0 18px}
+h1{font-size:clamp(30px,5vw,48px);line-height:1.12;letter-spacing:-.02em;margin:0 0 16px;max-width:20ch;font-weight:600}
+.lead{color:var(--muted);font-size:18px;max-width:62ch;margin:0 0 28px}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;text-decoration:none;border-radius:8px;padding:13px 20px;font-weight:600}
+.btn.primary{background:var(--thread);color:var(--ink)}
+.btn.ghost{border:1px solid var(--line);color:var(--text)}
+.btn:hover{filter:brightness(1.08)}
+figure{margin:36px 0 0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+figure img{display:block;width:100%;height:auto}
+figcaption{background:var(--ink-2);color:var(--muted);font-size:13px;padding:10px 14px}
+.numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:10px;overflow:hidden;margin:40px 0 0}
+.numbers div{background:var(--ink);padding:18px 18px 16px}
+.numbers b{display:block;font:600 26px/1.15 var(--mono);letter-spacing:-.01em}
+.numbers span{color:var(--muted);font-size:13.5px}
+section{padding:48px 0 0}
+h2{font-size:22px;margin:0 0 16px;font-weight:600}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s;padding:0;margin:0;list-style:none}
+.steps li{border-top:2px solid var(--thread);padding-top:12px}
+.steps li::before{counter-increment:s;content:counter(s);font:600 13px var(--mono);color:var(--thread);display:block;margin-bottom:4px}
+.steps strong{display:block;margin-bottom:4px}
+.steps p{margin:0;color:var(--muted);font-size:15px}
+.how{color:var(--muted);max-width:70ch}
+.how li{margin-bottom:6px}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:22px 0 40px;color:var(--muted);font-size:13.5px}
+@media (max-width:760px){.numbers{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}header{padding-top:32px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <header>
+  <p class="name">DebtScope</p>
+  <h1>Every bond a company owes, read straight from its SEC filing.</h1>
+  <p class="lead">DebtScope downloads a company's annual report from the SEC, finds every bond and loan it mentions,
+   checks that they add up to the debt the company officially reports, and turns the result into an Excel credit
+   report and an interactive map of the filing.</p>
+  <div class="actions">
+   <a class="btn primary" href="demo/apple-10k-crawler.html">Open the live demo: Apple 10-K</a>
+   <a class="btn ghost" href="demo/DebtScope_AAPL_10-K_2025-09-27.xlsx" download>Download the Excel report</a>
+   <a class="btn ghost" href="https://github.com/SecondinCode/debtscope">Code on GitHub</a>
+  </div>
+  <figure>
+   <img src="crawler.gif" alt="The DebtScope spider walking through Apple's 10-K, linking highlighted figures while a dashboard fills up below" width="800" height="500">
+   <figcaption>The crawler on Apple's 10-K for the fiscal year ended 27 September 2025.</figcaption>
+  </figure>
+  <div class="numbers" aria-label="Apple results">
+   <div><b>$90.7bn</b><span>term debt reported in XBRL</span></div>
+   <div><b>100%</b><span>of principal matched bond by bond ($91,281m of $91,281m)</span></div>
+   <div><b>24.6%</b><span>of principal due within 24 months</span></div>
+   <div><b>1,550</b><span>figures highlighted in the filing</span></div>
+  </div>
+ </header>
+
+ <section>
+  <h2>What to try in the demo</h2>
+  <p class="how" style="margin-top:-8px">Best on a computer: the demo is the full filing with a side panel.</p>
+  <ol class="steps">
+   <li><strong>Press Start crawl</strong><p>The spider walks through the filing and spins a thread to each finding. The strip at the bottom shows what it reads in real time.</p></li>
+   <li><strong>Open the Debt stack tab</strong><p>Pick a note, for example the 3.600% Notes due 2042, and the spider traces every place it is mentioned.</p></li>
+   <li><strong>Hover a highlighted number</strong><p>Official figures show the XBRL tag behind them, such as <code>us-gaap:LongTermDebt</code>. Use the filter to search tags or words.</p></li>
+  </ol>
+ </section>
+
+ <section>
+  <h2>How it works</h2>
+  <ul class="how">
+   <li>Data comes from SEC EDGAR: the filing itself plus the company's XBRL facts.</li>
+   <li>Bonds are read from the cover page, the debt footnote tables, the exhibit index and the narrative text, and every number keeps a link to the sentence it came from.</li>
+   <li>The bond list is reconciled with the contractual maturity schedule the company reports. When it doesn't add up, the report says so instead of filling the gap.</li>
+   <li>Tested on Apple and Microsoft 10-Ks, with 34 automated tests run on Windows and Linux at every change.</li>
+  </ul>
+ </section>
+
+ <footer>
+  This demo is a snapshot generated on 18 October 2026 from public SEC filings. It is not investment advice.
+  Built by Mario Iannucci. <a href="https://github.com/SecondinCode/debtscope">Source and documentation</a>.
+ </footer>
+</div>
+</body>
+</html>
