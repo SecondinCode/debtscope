@@ -1,0 +1,56 @@
+<canvas id="ds-canvas" aria-hidden="true"></canvas>
+<aside id="ds-panel" aria-label="DebtScope crawler">
+ <button class="ds-toggle" type="button" aria-label="Hide or show the panel" title="Hide or show the panel">&#x203A;</button>
+ <div class="ds-head">
+  <h1 class="ds-co" id="ds-co"></h1>
+  <div class="ds-sub" id="ds-sub"></div>
+ </div>
+ <div class="ds-tabs" role="tablist">
+  <button class="ds-tab" role="tab" aria-selected="true" data-tab="find">Findings</button>
+  <button class="ds-tab" role="tab" aria-selected="false" data-tab="debt">Debt stack</button>
+ </div>
+ <section class="ds-pane" data-pane="find">
+  <div class="ds-crawl">
+   <button class="ds-go" id="ds-go" type="button" aria-pressed="false">Start crawl</button>
+   <label class="ds-speed">Speed <input id="ds-speed" type="range" min="1" max="10" value="5"></label>
+  </div>
+  <div class="ds-cats" id="ds-cats"></div>
+  <input class="ds-search" id="ds-q" type="search" placeholder="Filter, e.g. 2042, covenant or LongTermDebt">
+  <div class="ds-nav">
+   <button type="button" id="ds-prev" aria-label="Previous finding">&#x2039;</button>
+   <div class="ds-count" id="ds-count"></div>
+   <button type="button" id="ds-next" aria-label="Next finding">&#x203A;</button>
+  </div>
+  <ul class="ds-list" id="ds-list"></ul>
+ </section>
+ <section class="ds-pane" data-pane="debt" hidden>
+  <div class="ds-kpis" id="ds-kpis"></div>
+  <div id="ds-warns"></div>
+  <div class="ds-h">Notes &mdash; select one to trace every mention</div>
+  <div class="ds-bonds" id="ds-bonds"></div>
+ </section>
+</aside>
+
+<section id="dsd" aria-label="Crawl dashboard">
+ <button id="dsd-toggle" type="button">Hide dashboard</button>
+ <div class="dsd-p">
+  <p class="dsd-h">Live findings <span>newest first</span></p>
+  <ul id="dsd-feed"></ul>
+ </div>
+ <div class="dsd-p">
+  <p class="dsd-h">Crawl progress</p>
+  <div class="dsd-big"><span id="dsd-read">0</span> <small>of <span id="dsd-total">0</span> read</small></div>
+  <div id="dsd-seg"></div>
+  <div id="dsd-legend"></div>
+ </div>
+ <div class="dsd-p">
+  <p class="dsd-h">Notes found in text <b id="dsd-notes-n"></b></p>
+  <div id="dsd-dots"></div>
+  <div class="dsd-key"><span style="--dc:var(--thread)"><i></i>outstanding</span><span style="--dc:#8A97B0"><i></i>exhibits only</span><span style="--dc:#F5A524"><i></i>may be repaid</span></div>
+ </div>
+ <div class="dsd-p">
+  <p class="dsd-h">Contractual maturities <span>XBRL</span></p>
+  <div id="dsd-wall"></div>
+  <div class="dsd-cap" id="dsd-wall-cap"></div>
+ </div>
+</section>

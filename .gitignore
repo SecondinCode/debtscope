@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+reports/
+.venv/
+*.xlsx
+*.json
+!tests/fixtures/*.json

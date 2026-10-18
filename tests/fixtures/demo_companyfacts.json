@@ -1,0 +1,308 @@
+{
+ "cik": 9999999,
+ "entityName": "DEMO HOLDINGS INC (SYNTHETIC)",
+ "_comment": "SYNTHETIC TEST FIXTURE - invented figures",
+ "facts": {
+  "us-gaap": {
+   "LongTermDebt": {
+    "label": "LongTermDebt",
+    "units": {
+     "USD": [
+      {
+       "end": "2024-12-31",
+       "val": 5550000000,
+       "accn": "0000000000-25-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      },
+      {
+       "end": "2024-12-31",
+       "val": 5550000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      },
+      {
+       "end": "2025-12-31",
+       "val": 7201000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "LongTermDebtCurrent": {
+    "label": "LongTermDebtCurrent",
+    "units": {
+     "USD": [
+      {
+       "end": "2025-12-31",
+       "val": 1583000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "LongTermDebtNoncurrent": {
+    "label": "LongTermDebtNoncurrent",
+    "units": {
+     "USD": [
+      {
+       "end": "2025-12-31",
+       "val": 5618000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "CommercialPaper": {
+    "label": "CommercialPaper",
+    "units": {
+     "USD": [
+      {
+       "end": "2025-12-31",
+       "val": 400000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "CashAndCashEquivalentsAtCarryingValue": {
+    "label": "CashAndCashEquivalentsAtCarryingValue",
+    "units": {
+     "USD": [
+      {
+       "end": "2025-12-31",
+       "val": 2100000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "MarketableSecuritiesCurrent": {
+    "label": "MarketableSecuritiesCurrent",
+    "units": {
+     "USD": [
+      {
+       "end": "2025-12-31",
+       "val": 900000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "OperatingIncomeLoss": {
+    "label": "OperatingIncomeLoss",
+    "units": {
+     "USD": [
+      {
+       "start": "2024-01-01",
+       "end": "2024-12-31",
+       "val": 3000000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      },
+      {
+       "start": "2025-10-01",
+       "end": "2025-12-31",
+       "val": 800000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      },
+      {
+       "start": "2025-01-01",
+       "end": "2025-12-31",
+       "val": 3200000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "InterestExpense": {
+    "label": "InterestExpense",
+    "units": {
+     "USD": [
+      {
+       "start": "2025-01-01",
+       "end": "2025-12-31",
+       "val": 260000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "DepreciationDepletionAndAmortization": {
+    "label": "DepreciationDepletionAndAmortization",
+    "units": {
+     "USD": [
+      {
+       "start": "2025-01-01",
+       "end": "2025-12-31",
+       "val": 800000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths": {
+    "label": "LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths",
+    "units": {
+     "USD": [
+      {
+       "end": "2025-12-31",
+       "val": 1583000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "LongTermDebtMaturitiesRepaymentsOfPrincipalInYearTwo": {
+    "label": "LongTermDebtMaturitiesRepaymentsOfPrincipalInYearTwo",
+    "units": {
+     "USD": [
+      {
+       "end": "2025-12-31",
+       "val": 0,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "LongTermDebtMaturitiesRepaymentsOfPrincipalInYearThree": {
+    "label": "LongTermDebtMaturitiesRepaymentsOfPrincipalInYearThree",
+    "units": {
+     "USD": [
+      {
+       "end": "2025-12-31",
+       "val": 1500000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFour": {
+    "label": "LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFour",
+    "units": {
+     "USD": [
+      {
+       "end": "2025-12-31",
+       "val": 868000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFive": {
+    "label": "LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFive",
+    "units": {
+     "USD": [
+      {
+       "end": "2025-12-31",
+       "val": 2000000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   },
+   "LongTermDebtMaturitiesRepaymentsOfPrincipalAfterYearFive": {
+    "label": "LongTermDebtMaturitiesRepaymentsOfPrincipalAfterYearFive",
+    "units": {
+     "USD": [
+      {
+       "end": "2025-12-31",
+       "val": 1250000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   }
+  },
+  "dei": {
+   "EntityCommonStockSharesOutstanding": {
+    "label": "shares",
+    "units": {
+     "shares": [
+      {
+       "end": "2026-02-10",
+       "val": 1200000000,
+       "accn": "0000000000-26-000001",
+       "fy": 2025,
+       "fp": "FY",
+       "form": "10-K",
+       "filed": "2026-02-15"
+      }
+     ]
+    }
+   }
+  }
+ }
+}
