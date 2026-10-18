@@ -231,3 +231,18 @@ class InlineXbrlViewerTests(unittest.TestCase):
         self.assertEqual(marks["us-gaap:Revenues"], "money")
         self.assertEqual(marks["us-gaap:EffectiveIncomeTaxRateContinuingOperations"], "rates")
         self.assertGreaterEqual(counts["debt"], 2)   # tagged number + the words "term debt"
+
+
+class TableFigureHighlightTests(unittest.TestCase):
+    def test_untagged_table_figures_are_highlighted_by_row(self):
+        from debtscope.extract import load_soup
+        from debtscope.viewer import annotate
+        html = ("<html><body><table><tr><td>Item 1A.</td><td>Risk Factors</td><td>5</td></tr></table>"
+                "<p>(dollars in millions)</p><table>"
+                "<tr><td>Term debt</td><td>$</td><td>12,350</td></tr>"
+                "<tr><td>Effective tax rate</td><td>15.6</td><td>%</td></tr>"
+                "<tr><td>Total net sales</td><td>$</td><td>416,161</td></tr></table></body></html>")
+        soup = load_soup(html)
+        annotate(soup)
+        marks = {m.get_text(strip=True): m["data-c"] for m in soup.find_all("mark") if m.get("data-r")}
+        self.assertEqual(marks, {"12,350": "debt", "15.6": "rates", "416,161": "money"})  # page "5" skipped

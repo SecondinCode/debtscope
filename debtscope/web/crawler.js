@@ -60,6 +60,7 @@
     const q = query.toLowerCase();
     list = all.filter(m => active.has(m.dataset.c) && visible(m) &&
       (!q || m.textContent.toLowerCase().includes(q) || (m.dataset.x || '').toLowerCase().includes(q)
+          || (m.dataset.r || '').toLowerCase().includes(q)
           || context(m).toLowerCase().includes(q)));
     cursor = Math.min(cursor, list.length - 1);
     shown = 200; renderList(); renderCount();
@@ -76,7 +77,8 @@
       const h = document.createElement('span'); h.className = 'hit'; h.style.setProperty('--c', colors[m.dataset.c]);
       h.textContent = m.textContent;
       const c = document.createElement('span'); c.className = 'ctx';
-      c.textContent = m.dataset.x ? `${m.dataset.x.split(':').pop()}: ${context(m)}` : context(m);
+      c.textContent = m.dataset.x ? `${m.dataset.x.split(':').pop()}: ${context(m)}`
+                    : m.dataset.r ? `Table row "${m.dataset.r}"` : context(m);
       b.append(h, c); b.onclick = () => go(i); li.appendChild(b); ul.appendChild(li);
     });
     if (list.length > shown) {

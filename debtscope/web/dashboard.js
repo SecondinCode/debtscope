@@ -86,7 +86,7 @@ window.Dash = (function () {
       // live feed
       const cat = D.categories.find(c => c.id === m.dataset.c);
       const row = document.createElement('li');
-      const src = m.dataset.x ? m.dataset.x : 'filing text';
+      const src = m.dataset.x ? m.dataset.x : m.dataset.r ? `table: ${m.dataset.r}` : 'filing text';
       row.innerHTML = `<time>${clock()}</time><b style="--c:${cat ? cat.color : '#999'}"></b>`
         + `<span class="v">${esc(m.textContent.trim().slice(0, 42))}</span><span class="s">${esc(src)}</span>`;
       const feed = $('#dsd-feed');

@@ -157,7 +157,8 @@ With several tickers a `DebtScope_comparison.xlsx` is added.
 the original filing with every finding highlighted in seven categories (debt &
 financing, shares & equity, amounts, rates, dates, filing references, risk
 signals). Every inline-XBRL number is highlighted too, with its concept
-(e.g. `us-gaap:LongTermDebt`) on hover. *Start crawl* sends a procedurally
+(e.g. `us-gaap:LongTermDebt`) on hover, and table figures the company did not tag are
+highlighted too, categorised by their row ("Term debt", "Effective tax rate"...). *Start crawl* sends a procedurally
 animated spider through the document: eight legs solved with inverse
 kinematics, an alternating gait, feet that grip the highlighted words, and a
 silk thread to each finding. A dashboard strip follows the crawl live:

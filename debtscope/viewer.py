@@ -121,6 +121,65 @@ def _spans(text: str) -> list[tuple[int, int, str, str]]:
     return sorted(taken)
 
 
+_ROW_DEBT = re.compile(r"debt|notes?\b|bonds?|commercial paper|borrow|interest expense|credit facilit", re.I)
+_ROW_SHARES = re.compile(r"shares?|per share|dividend|repurchase|purchases|stock", re.I)
+_ROW_RATE = re.compile(r"rate|percent|percentage|margin|%", re.I)
+_PCT_CELL = re.compile(r"^\(?-?\d{1,3}(?:\.\d+)?\s?%\)?$")
+_SKIP_ROW = re.compile(r"^(?:item\s|exhibit|part\s|page\b)", re.I)
+
+
+def annotate_tables(soup, counts: dict[str, int]) -> None:
+    """Highlight table figures that the company did not tag in XBRL.
+
+    The category comes from the row label ("Term debt" -> debt, "Effective tax
+    rate" -> rates...). Tables with no money or percentages (table of contents,
+    cover page, exhibit index) are skipped so page numbers and zip codes stay plain.
+    """
+    from .extract import EXHIBIT_TABLE_RE, clean, parse_number
+    for table in soup.find_all("table"):
+        ttext = clean(table.get_text(" "))
+        if not re.search(r"\$|%|millions|thousands|billions", ttext) or EXHIBIT_TABLE_RE.search(ttext):
+            continue
+        for row in table.find_all("tr"):
+            cells = row.find_all(["td", "th"])
+            if not cells:
+                continue
+            label = clean(cells[0].get_text(" "))
+            if _SKIP_ROW.match(label):
+                continue
+            for td in cells[1:]:
+                if td.find("mark"):
+                    continue                       # already highlighted (XBRL or text pass)
+                text = clean(td.get_text(" "))
+                nxt = td.find_next_sibling(["td", "th"])
+                pct_next = bool(nxt) and clean(nxt.get_text(" ")).startswith("%")   # "7" | "%"
+                is_pct = pct_next or bool(_PCT_CELL.match(text.replace(" ", "")))
+                if pct_next:
+                    number = parse_number(text)
+                    if number is None:
+                        continue
+                number = parse_number(text) if not is_pct else None
+                if not is_pct and (number is None or number == 0):
+                    continue
+                if (not is_pct and "," not in text and "." not in text and abs(number) < 100
+                        and not re.search(r"\$|%", ttext[:300])):
+                    continue                       # small bare integers in non-financial tables
+                if _ROW_DEBT.search(label):
+                    cat = "debt"
+                elif is_pct or _ROW_RATE.search(label):
+                    cat = "rates"
+                elif _ROW_SHARES.search(label):
+                    cat = "shares"
+                else:
+                    cat = "money"
+                mark = soup.new_tag("mark", attrs={"class": "ds", "data-c": cat, "data-r": label[:80],
+                                                   "title": f"Table figure, not XBRL-tagged: {label[:80]}"})
+                for child in list(td.contents):
+                    mark.append(child.extract())
+                td.append(mark)
+                counts[cat] += 1
+
+
 def annotate(soup) -> dict[str, int]:
     """Wrap every finding in <mark class="ds" data-c=... data-k=...>. Returns counts."""
     counts = {c[0]: 0 for c in CATEGORIES}
@@ -148,6 +207,7 @@ def annotate(soup) -> dict[str, int]:
         if pos < len(text):
             pieces.append(NavigableString(text[pos:]))
         node.replace_with(*pieces)
+    annotate_tables(soup, counts)          # last: only cells nothing else has claimed
     return counts
 
 
